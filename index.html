@@ -10,6 +10,14 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 </head>
+<script>
+function popLogin(state){
+	if(state && !$('#formBox').is(":visible"))
+		$('#formBox').fadeIn();
+	else
+		$('#formBox').fadeOut();
+}
+</script>
 <body>
   
   <ul id="nav">
@@ -28,21 +36,13 @@
 	        </div>
 	     </li>
      -->
-    <li><a href="#">Login</a></li>
+    <li><a href="#" onclick="popLogin(true)">Login</a></li>
   </ul>
   <div id="formBox">
                 <form>
-                    <input type="email" id="email" placeholder="Email" required/>
-                    <input type="text" id="name" placeholder="Name" required/>
-                    <input type="text" id="tel" placeholder="Mobile" required/>
-                    
-                    <div class="gender">
-                        <input type="radio" value="None" id="male" name="gender" checked/>
-                        <label for="male" class="radio" chec>Male</label>
-                        <input type="radio" value="None" id="female" name="gender" />
-                        <label for="female" class="radio">Female</label>
-                    </div>
-                    <a id="regButton" href="#" onclick="processSubmit()" class="button">Register</a>
+                    <input type="text" id="loginIdField" placeholder="ID" required/>
+                    <input type="password" id="passwordField" placeholder="Password" required/>
+                    <a id="loginButton" href="#" onclick="popLogin(false)" class="button">Login</a>
                 </form>
   </div>
   <header id="intro" class="section">
