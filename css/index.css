@@ -1,0 +1,102 @@
+    body{
+      font: 16px 'Open Sans','微軟正黑體','Microsoft JhengHei UI',Helvetica,Arial,sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x:hidden;
+    }
+    /* nav */
+    #nav {
+      display: inline-block;
+      float: right;
+      list-style: none;
+      padding: 0 12px;
+      position: fixed;
+      right: 48px;
+      top: 24px;
+    }
+    #nav li{
+      float: left;
+      margin-left: 24px;
+    }
+    a{
+      color: #fff;
+      opacity: .6;
+      padding: 8px 0;
+      text-decoration: none;
+      text-shadow: -1px 1px #888,1px 1px #888,0 0 2px #888,0 0 4px #888;
+    }
+    a:hover{ opacity:1; }
+    
+    .section{
+      display: table;
+      float: left;
+      width: 100%;
+    }
+    .section>div{
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+    h1, h2{
+      margin: 0;
+      padding: 0;
+    }
+    h1{ font-size: 64px; }
+    h2{ font-size: 28px; }
+    table{
+      display: inline-block;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    
+    #intro{
+      background:url(../img/blured_bg2.jpg) 50% 0 no-repeat fixed;
+      background-size: cover;
+      color: #fff;
+      height: 100vh;
+      width: 100%;
+    }
+    #intro h1,#intro h2 { text-shadow:0 1px 4px #000; }
+    .bigLogo {
+      background: url(../img/bigLogo.png) center no-repeat;
+      background-size: contain;
+      display: inline-block;
+      margin: 32px 0;
+      width: 100%;
+      height: 240px;
+    }
+      #separator{
+          height: 300px;
+        width: 100%;
+      }
+       td{
+          padding:20px;
+      }
+      .dropdown-content {
+        display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+      .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+      .dropdown-content a{
+          opacity: 1;
+          text-shadow: none;
+      }
+        .dropdownContainer:hover .dropdown-content {
+            display: block;
+        }
+        .dropdownContainer {
+            position: relative;
+            display: inline-block;
+        }
+}

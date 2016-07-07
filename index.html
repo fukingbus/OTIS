@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>IT Club</title>
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+</style>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+<body>
+  
+  <ul id="nav">
+    <li><a href="#intro" class="active">HOME</a></li>
+    <!--
+    	// Future usage
+	    <li>
+	        <div class="dropdownContainer"><a href="#introCoding">CODING</a>
+	        <div class="dropdown-content">
+	            <a href="coding.html">Introduction</a>
+	            <a href="helloworld.html">Hello World</a>
+	            <a href="http://developer.android.com/">Android Developers</a>
+	            <a href="http://stackoverflow.com">StackOverFlow</a>
+	            <a href="http://www.w3schools.com/">W3Schools</a>
+	          </div>
+	        </div>
+	     </li>
+     -->
+    <li><a href="#">Login</a></li>
+  </ul>
+  <div id="formBox">
+                <form>
+                    <input type="email" id="email" placeholder="Email" required/>
+                    <input type="text" id="name" placeholder="Name" required/>
+                    <input type="text" id="tel" placeholder="Mobile" required/>
+                    
+                    <div class="gender">
+                        <input type="radio" value="None" id="male" name="gender" checked/>
+                        <label for="male" class="radio" chec>Male</label>
+                        <input type="radio" value="None" id="female" name="gender" />
+                        <label for="female" class="radio">Female</label>
+                    </div>
+                    <a id="regButton" href="#" onclick="processSubmit()" class="button">Register</a>
+                </form>
+  </div>
+  <header id="intro" class="section">
+    <div>
+      <i class="bigLogo"></i>
+      <h1>Welcome on-board</h1>
+      <h2>Online Travel Information system</h2>
+    </div>
+  </header>
+<div id="separator" class="section">
+    
+</div>
+  
+</body>
+
+</html>
