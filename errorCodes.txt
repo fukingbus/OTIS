@@ -1,0 +1,6 @@
+Global:
+200 - OK
+
+Login:
+201 - Login ID not found
+202 - Password Mismatch

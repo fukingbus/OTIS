@@ -3,21 +3,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <title>IT Club</title>
+  <title>OTIS</title>
   <style>
     @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 </style>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/index.js"></script>
 </head>
-<script>
-function popLogin(state){
-	if(state && !$('#formBox').is(":visible"))
-		$('#formBox').fadeIn();
-	else
-		$('#formBox').fadeOut();
-}
-</script>
 <body>
   
   <ul id="nav">
@@ -42,7 +35,8 @@ function popLogin(state){
                 <form>
                     <input type="text" id="loginIdField" placeholder="ID" required/>
                     <input type="password" id="passwordField" placeholder="Password" required/>
-                    <a id="loginButton" href="#" onclick="popLogin(false)" class="button">Login</a>
+                    <a id="loginButton" href="#" onclick="makeLogin()" class="button">Login</a>
+                    <a href="#">Staff</a>
                 </form>
   </div>
   <header id="intro" class="section">
