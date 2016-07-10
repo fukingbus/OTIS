@@ -8,6 +8,7 @@
         		insertIntoHotel($obj);
         		break;
         	case 'flight':
+        		insertIntoFlight($obj);
         		break;
         }
 		function feedBack($errorCode,$obj){
@@ -38,6 +39,29 @@
 				."'".$obj['checkindate']."',"
 				."'".$obj['checkoutdate']."',"
 				."'".$obj['remark']."'".
+			")";
+			if ($conn->query($sql) === TRUE) {
+			    feedBack(200,null);
+			} else {
+			    feedBack(400,null);
+			}
+        }
+        function insertIntoFlight($obj){
+        	global $conn;
+        	$sql = "INSERT INTO flightbooking (FlightNo, DepDateTime, Class, OrderDate,StaffID,CustID,AdultNum,ChildNum,InfantNum,AdultPrice,ChildPrice,InfantPrice,TotalAmt) VALUES ("
+				."'".$obj['flightno']."',"
+				."'".$obj['depdatetime']."',"
+				."'".$obj['class']."',"
+				."'".$obj['orderdate']."',"
+				."'".$obj['staffid']."',"
+				."'".$obj['custid']."',"
+				."'".$obj['adultnum']."',"
+				."'".$obj['childnum']."',"
+				."'".$obj['infantnum']."',"
+				."'".$obj['adultprice']."',"
+				."'".$obj['childprice']."',"
+				."'".$obj['infantprice']."',"
+				."'".$obj['totalamt']."'".
 			")";
 			if ($conn->query($sql) === TRUE) {
 			    feedBack(200,null);

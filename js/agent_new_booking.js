@@ -1,5 +1,5 @@
 var userObj;
-
+var flightObj;
 $( document ).ready(function() {
   if(getCookie("user")!=""){
 		res = JSON.parse(getCookie("user"));
@@ -9,13 +9,27 @@ $( document ).ready(function() {
 		else{
 			$('#staffIDBox').val(userObj.id);
 			if(getParameterByName('type') == 'hotel'){
+				$('#hotelFormBox').show();
 				pullHotel();
 				$('#hotelIDBox').change(function() {
 				    pullRoom($(this).val())
 				});
 			}
 			else{
+				$('#FstaffIDBox').val(userObj.id);
+				$('#flightFormBox').show();
 				pullFlight();
+				$('#flightNoBox').change(function() {
+				    pullClass($(this).val())
+				});
+				$('#classBox').change(function() {
+					vlue = $(this).val();
+					console.log(vlue);
+				    $.each(flightObj, function( key, value ) {
+					  if(value.values.fclass == vlue)
+					  	  flightObj = value;
+					});
+				});
 			}
 		}
 	}	
@@ -41,29 +55,44 @@ obj= {};
 			};
 			break;
 		case 'flight':
+			obj = {
+				"staffid":$('#FstaffIDBox').val(),
+				"orderdate":$('#ForderDateBox').val(),
+				"custid":$('#FcustIDBox').val(),
+				"depdatetime":flightObj.values.depdatetime,
+				"class":$('#classBox').val(),
+				"flightno":$('#flightNoBox').val(),
+				"adultnum":$('#audltNumBox').val(),
+				"childnum":$('#childNumBox').val(),
+				"infantnum":$('#infantNumBox').val(),
+				"adultprice":$('#adultPriceBox').val(),
+				"childprice":$('#childPriceBox').val(),
+				"infantprice":$('#infantPriceBox').val(),
+				"totalamt":$('#FtotalAmtBox').val()
+			};
 			break;
 	}
 	console.log(obj);
 	submitAdd(type,obj);
 }
-function pullRoom(id){
-	$.get( "php/hotel_details.php?id="+id, function( res ) {
-	  	$('#rmTypeBox').empty();
-	  	$.each(res.data, function( index, value ) {
-	  		$('#rmTypeBox').append($("<option></option>")
-                    .attr("value",value.values.rmtype)
-                    .text(value.values.rmtype));
-		  
+function pullFlight(){
+	$.get( "php/getflight.php", function( res ) {
+		$.each(res.obj, function( key, value ) {
+		  $('#flightNoBox').append($("<option></option>")
+                    .attr("value",value.id)
+                    .text(value.id));
 		});
 	});
 }
-function pullHotel(){
-	$.get( "php/hotels.php", function( res ) {
-		$.each(res.obj, function( key, value ) {
-		  $('#hotelIDBox').append($("<option></option>")
-                    .attr("value",value.id)
-                    .text(value.engname));
+function pullClass(id){
+	$.get( "php/get_detailed_flight.php?id="+id, function( res ) {
+	  	$('#classBox').empty();
+	  	$.each(res.obj, function( index, value ) {
+	  		$('#classBox').append($("<option></option>")
+                    .attr("value",value.values.fclass)
+                    .text(value.values.fclass));
 		});
+		  flightObj = res.obj;
 	});
 }
 function submitAdd(type,obj){
@@ -110,4 +139,14 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+function getParameterByName( name ){
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
 }

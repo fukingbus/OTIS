@@ -4,10 +4,10 @@ $( document ).ready(function() {
   if(getCookie("user")!=""){
 		res = JSON.parse(getCookie("user"));
 		userObj = res.userObj;
-		if(res.userType != 1)
+		if(res.userType != 2)
 			window.location.replace("./");	
 		else{
-			//pullHotel();
+			
 		}
 	}	
 	else
@@ -35,73 +35,18 @@ function fillData(type,data){
 			{"name":"passport" 		,"label":"Passport","datatype":"string","editable":true},
 			];
 			break;
-		case 'flight':
-				metadata = [
-					{"name":"bookingid" 		,"label":"Booking ID","datatype":"string","editable":false},
-					{"name":"flightno"			,"label":"Flight Number","datatype":"string","editable":true},
-					{"name":"depdatetime" 		,"label":"Departure","datatype":"string","editable":true},
-					{"name":"fclass" 			,"label":"Class","datatype":"string","editable":true},
-					{"name":"orderdate"			,"label":"Order Date","datatype":"string","editable":true},
-					{"name":"staffid" 			,"label":"Staff ID","datatype":"string","editable":true},
-					{"name":"custid" 			,"label":"Customer ID","datatype":"string","editable":true},
-					{"name":"adultnum"			,"label":"Adult","datatype":"string","editable":true},
-					{"name":"childnum" 			,"label":"Child","datatype":"string","editable":true},
-					{"name":"infantnum" 		,"label":"Infant","datatype":"string","editable":true},
-					{"name":"adultprice" 		,"label":"Adult $","datatype":"string","editable":true},
-					{"name":"childprice" 		,"label":"Child $","datatype":"string","editable":true},
-					{"name":"infantprice" 		,"label":"Infant $","datatype":"string","editable":true},
-					{"name":"totalamt" 			,"label":"Total","datatype":"string","editable":true},
-					{"name":"surname" 			,"label":"Surname","datatype":"string","editable":true},
-					{"name":"givenname" 		,"label":"Given Name","datatype":"string","editable":true},
-					{"name":"passport" 			,"label":"Passport","datatype":"string","editable":true},
-			];
-			break;
 	}
 	
 	editableGrid.load({"metadata" : metadata,"data" : data});
 	editableGrid.renderGrid("tablecontent", "testgrid");
-	editableGrid.modelChanged = function(rowIndex, columnIndex, oldValue, newValue, row) { 
-		console.log(hotelbooking[rowIndex].values.bookingid);
-			$.ajax({
-			  type: "POST",
-			  url: "php/update_booking.php",
-			  data: {
-			  	"id" : hotelbooking[rowIndex].values.bookingid,
-			  	"obj" : hotelbooking[0].values
-			  },
-			  success: function(res){
-			  		console.log(res);
-			  		if(res.error==null){
-			  			
-			  		}
-			  		else{
-			  			switch(res.error.code){
-			  				case 300:
-			  					console.log("error")
-			  					break;
-			  			}
-			  		}
-			  },
-			  error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR);
-				},
-			  dataType: "json"
-			});
-		};
 	//editableGrid.loadJSON("grid.json");
 }
 function pullHotelBooking(){
-	$.get( "php/hotel_booking.php", function( res ) {
+	id = $('#keyword').val();
+	$.get( "php/hotel_booking.php?id="+id, function( res ) {
 		console.log(res);
 		hotelbooking = res.obj;
 		fillData('hotel',hotelbooking);
-	});
-}
-function pullFlightBooking(){
-	$.get( "php/flight_booking.php", function( res ) {
-		console.log(res);
-		flightbooking = res.obj;
-		fillData('flight',flightbooking);
 	});
 }
 function setCookie(cname, cvalue, exdays) {

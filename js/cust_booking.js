@@ -4,7 +4,7 @@ $( document ).ready(function() {
   if(getCookie("user")!=""){
 		res = JSON.parse(getCookie("user"));
 		userObj = res.userObj;
-		if(res.userType != 1)
+		if(res.userType != 0)
 			window.location.replace("./");	
 		else{
 			//pullHotel();
@@ -60,45 +60,17 @@ function fillData(type,data){
 	
 	editableGrid.load({"metadata" : metadata,"data" : data});
 	editableGrid.renderGrid("tablecontent", "testgrid");
-	editableGrid.modelChanged = function(rowIndex, columnIndex, oldValue, newValue, row) { 
-		console.log(hotelbooking[rowIndex].values.bookingid);
-			$.ajax({
-			  type: "POST",
-			  url: "php/update_booking.php",
-			  data: {
-			  	"id" : hotelbooking[rowIndex].values.bookingid,
-			  	"obj" : hotelbooking[0].values
-			  },
-			  success: function(res){
-			  		console.log(res);
-			  		if(res.error==null){
-			  			
-			  		}
-			  		else{
-			  			switch(res.error.code){
-			  				case 300:
-			  					console.log("error")
-			  					break;
-			  			}
-			  		}
-			  },
-			  error: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR);
-				},
-			  dataType: "json"
-			});
-		};
 	//editableGrid.loadJSON("grid.json");
 }
 function pullHotelBooking(){
-	$.get( "php/hotel_booking.php", function( res ) {
+	$.get( "php/hotel_booking.php?id="+userObj.id, function( res ) {
 		console.log(res);
 		hotelbooking = res.obj;
 		fillData('hotel',hotelbooking);
 	});
 }
 function pullFlightBooking(){
-	$.get( "php/flight_booking.php", function( res ) {
+	$.get( "php/flight_booking.php?id="+userObj.id, function( res ) {
 		console.log(res);
 		flightbooking = res.obj;
 		fillData('flight',flightbooking);

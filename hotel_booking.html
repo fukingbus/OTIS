@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <title>Flight</title>
+  <title>Booking</title>
   <style>
     @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 </style>
@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/editablegrid.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="js/agent_booking.js"></script>
+<script src="js/hotel_booking.js"></script>
 <script type="text/javascript" src="js/editablegrid.js"></script>
 <script type="text/javascript" src="js/editablegrid_validators.js"></script>
 <script type="text/javascript" src="js/editablegrid_renderers.js"></script>
@@ -27,9 +27,6 @@
 	        	<a href="#">Menu</a>
 	        <div class="dropdown-content">
 	        	<a onClick="pullHotelBooking()" href="#">View Hotel Booking</a>
-	        	<a onClick="pullFlightBooking()"href="#">View Flight Booking</a>
-	        	<a href="agent_new_booking.html?type=hotel">Add Hotel Booking</a>
-	        	<a href="agent_new_booking.html?type=flight">Add Flight Booking</a>
 	          </div>
 	        </div>
 	     </li>
@@ -37,6 +34,8 @@
   <header id="intro" class="section">
     <div>
       <div id="formBox">
+		      	<input type="text" id="keyword" placeholder="Keyword"/>
+		      	<a id="updateBT" href="#" onclick="pullHotelBooking()" class="button">Refresh</a>
                 <div id="tablecontent"></div>
   		</div>
     </div>

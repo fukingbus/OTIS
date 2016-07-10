@@ -1,10 +1,10 @@
 <?php
 	header('Content-type: application/json');
 	include 'conn/conn.php';
-	$id = "";
+		$id = "";
 		if(isset($_GET['id']))
 			$id = $_GET['id'];
-        feedBack(200,getHotelBooking());
+        feedBack(200,getFlightBooking());
 		function feedBack($errorCode,$obj){
 			if($errorCode == 200){
 				echo json_encode(array(
@@ -18,14 +18,14 @@
 				);
 			}
 		}
-        function getHotelBooking(){
+        function getFlightBooking(){
         	global $conn;
         	global $id;
         	$sql;
         	if(isset($id))
-        		$sql= "SELECT * FROM hotelbooking INNER JOIN customer ON hotelbooking.CustID = customer.CustID WHERE hotelbooking.CustID ='".$id."' OR customer.Surname LIKE '%".$id."%' OR customer.MobileNo LIKE '".$id."'";
+        		$sql= "SELECT * FROM flightbooking INNER JOIN customer ON flightbooking.CustID = customer.CustID WHERE flightbooking.CustID ='".$id."'";
         	else
-        		$sql= "SELECT * FROM hotelbooking INNER JOIN customer ON hotelbooking.CustID = customer.CustID";
+        		$sql= "SELECT * FROM flightbooking INNER JOIN customer ON flightbooking.CustID = customer.CustID";
         	$result = $conn->query($sql);
         	if ($result -> num_rows > 0) {
         		$arr = array();
@@ -33,18 +33,19 @@
 	        	while($row = $result->fetch_assoc()) {
 			        $obj = new stdClass();
 	        				$obj -> bookingid 			= $row["BookingID"];
-	        				$obj -> orderdate 	= $row["OrderDate"];
-	        				$obj -> staffid 	= $row["StaffID"];
+	        				$obj -> flightno 	= $row["FlightNo"];
+	        				$obj -> depdatetime 	= $row["DepDateTime"];
+	        				$obj -> fclass 		= $row["Class"];
+	        				$obj -> orderdate 		= $row["OrderDate"];
+	        				$obj -> staffid 		= $row["StaffID"];
 	        				$obj -> custid 		= $row["CustID"];
-	        				$obj -> hotelid 		= $row["HotelID"];
-	        				$obj -> roomtype 		= $row["RoomType"];
-	        				$obj -> price 		= $row["Price"];
-	        				$obj -> roomnum		= $row["RoomNum"];
+	        				$obj -> adultnum		= $row["AdultNum"];
+	        				$obj -> childnum 		= $row["ChildNum"];
+	        				$obj -> infantnum 		= $row["InfantNum"];
+	        				$obj -> adultprice 		= $row["AdultPrice"];
+	        				$obj -> childprice 		= $row["ChildPrice"];
+	        				$obj -> infantprice 	= $row["InfantPrice"];
 	        				$obj -> totalamt 		= $row["TotalAmt"];
-	        				$obj -> checkin 		= $row["Checkin"];
-	        				$obj -> checkout 		= $row["Checkout"];
-	        				$obj -> remark 		= $row["Remark"];
-	        				
 	        				$obj -> surname 		= $row["Surname"];
 	        				$obj -> givenname 		= $row["GivenName"];
 	        				$obj -> passport 		= $row["Passport"];
