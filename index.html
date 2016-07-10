@@ -14,29 +14,35 @@
 <body>
   
   <ul id="nav">
-    <li><a href="#intro" class="active">HOME</a></li>
-    <!--
-    	// Future usage
+    <li><a id="nameLabel" href="#" class="active">HOME</a></li>
+    
 	    <li>
-	        <div class="dropdownContainer"><a href="#introCoding">CODING</a>
+	        <div class="dropdownContainer">
+	        	<a href="#">Menu</a>
 	        <div class="dropdown-content">
-	            <a href="coding.html">Introduction</a>
-	            <a href="helloworld.html">Hello World</a>
-	            <a href="http://developer.android.com/">Android Developers</a>
-	            <a href="http://stackoverflow.com">StackOverFlow</a>
-	            <a href="http://www.w3schools.com/">W3Schools</a>
+	        	<a id="cust_point" class="customerMenuItem" href="cust_point.html">Point</a>
+	            <a class="customerMenuItem" href="cust_personal.html">My Personal</a>
+	            <a class="customerMenuItem" href="#">My Bookings</a>
+	            
+	            <a class="travelAgentMenuItem" href="agent_flight.html">Flights</a>
+	            <a class="travelAgentMenuItem" href="agent_hotel.html">Hotels</a>
+	            <a class="travelAgentMenuItem" href="agent_booking.html">Customer records</a>
+	            <a class="travelAgentMenuItem" href="#">Search</a>
+	            
+	            <a class="hotelOwnerMenuItem" href="#">Records</a>
+	            <a class="hotelOwnerMenuItem" href="#">Rooms</a>
+	            <a class="hotelOwnerMenuItem" href="#">Room Report</a>
+	            
 	          </div>
 	        </div>
 	     </li>
-     -->
-    <li><a href="#" onclick="popLogin(true)">Login</a></li>
+    <li><a id="loginBT" href="#" onclick="loginOnClick()">Login</a></li>
   </ul>
   <div id="formBox">
                 <form>
                     <input type="text" id="loginIdField" placeholder="ID" required/>
                     <input type="password" id="passwordField" placeholder="Password" required/>
                     <a id="loginButton" href="#" onclick="makeLogin()" class="button">Login</a>
-                    <a href="#">Staff</a>
                 </form>
   </div>
   <header id="intro" class="section">

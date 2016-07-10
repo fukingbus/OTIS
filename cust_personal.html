@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Personal Information</title>
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+</style>
+<link rel="stylesheet" type="text/css" href="css/cust_personal.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/cust_personal.js"></script>
+</head>
+<body>
+  
+  <ul id="nav">
+    <li><a id="nameLabel" href="./" class="active">HOME</a></li>
+    
+  </ul>
+  <header id="intro" class="section">
+    <div>
+      <div id="formBox">
+                <form>
+                    <input type="text" id="surnameBox" placeholder="Surname"/>
+                    <input type="text" id="givennameBox" placeholder="Given Name"/>
+                    Date of Birth : <input type="date" id="dobBox"/><br>
+                    <div class="gender">
+                        <input type="radio" value="None" id="male" name="gender" checked/>
+                        <label for="male" class="radio" chec>Male</label>
+                        <input type="radio" value="None" id="female" name="gender" />
+                        <label for="female" class="radio">Female</label>
+                    </div>
+                    <input type="text" id="passportBox" placeholder="Passport"/>
+                    <input type="text" id="mobileBox" placeholder="Mobile"/>
+                    <input type="text" id="nationBox" placeholder="Nationality"/>
+                    
+                    <a id="loginButton" href="#" onclick="makeUpdate()" class="button">Submit</a>
+                </form>
+  	</div>
+    </div>
+  </header>
+</body>
+
+</html>

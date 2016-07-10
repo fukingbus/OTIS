@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Personal Information</title>
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+</style>
+<link rel="stylesheet" type="text/css" href="css/agent_new_booking.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/agent_new_booking.js"></script>
+</head>
+<body>
+  
+  <ul id="nav">
+    <li><a id="nameLabel" href="./" class="active">HOME</a></li>
+    
+  </ul>
+  <header id="intro" class="section">
+    <div>
+      <div id="hotelFormBox">
+                <form>
+                	Order Date : <input type="date" id="orderDateBox"/><br>
+                    <input type="text" id="staffIDBox" placeholder="Staff ID"/>
+                    <input type="text" id="custIDBox" placeholder="Cust ID"/>
+                    Hotel:
+                    <select id="hotelIDBox">
+                    	
+					</select>
+                    
+                    Room Type:
+                    <select id="rmTypeBox">
+                    	
+					</select>
+					
+                    <input type="text" id="rmNumBox" placeholder="Room Num"/>
+                    Check In Date : <input type="date" id="checkInDateBox"/><br>
+                    Check Out Date : <input type="date" id="checkOutDateBox"/><br>
+                    <input type="text" id="totalAmtBox" placeholder="Total"/>
+                    <input type="text" id="priceBox" placeholder="Price"/>
+                    <input type="text" id="remarkBox" placeholder="Remark"/>
+                    
+                    <a id="addButton" href="#" onclick="makeBooking('hotel')" class="button">Add</a>
+                </form>
+  	</div>
+    </div>
+  </header>
+</body>
+
+</html>
