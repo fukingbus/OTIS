@@ -1,8 +1,13 @@
 <?php
 	header('Content-type: application/json');
 	include 'conn/conn.php';
-	
-		$obj = getSchedule($_GET['id']);
+		$id = "";
+		$point = "";
+		if(isset($_GET['id']))
+			$id = $_GET['id'];
+		if(isset($_GET['point']))
+			$point = $_GET['point'];
+		$obj = getSchedule($id);
 		if(!$obj)
        	 feedBack(400,null);
        	else
@@ -23,7 +28,11 @@
 		}
         function getSchedule($id){
         	global $conn;
-        	$sql= "SELECT * FROM flightschedule INNER JOIN flightclass ON flightschedule.FlightNo=flightclass.FlightNo WHERE flightschedule.FlightNo LIKE '".$id."%'";
+        	global $point;
+        	if($point!="")
+        		$sql= "SELECT * FROM flightschedule INNER JOIN flightclass ON flightschedule.FlightNo=flightclass.FlightNo WHERE flightclass.Price_Adult <= ".$point."";
+        	else
+        		$sql= "SELECT * FROM flightschedule INNER JOIN flightclass ON flightschedule.FlightNo=flightclass.FlightNo WHERE flightschedule.FlightNo LIKE '".$id."%'";
         	$result = $conn->query($sql);
         	if ($result -> num_rows > 0) {
         		$arr = array();

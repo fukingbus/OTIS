@@ -6,78 +6,38 @@ $( document ).ready(function() {
 		userObj = res.userObj;
 		if(res.userType != 0)
 			window.location.replace("./");	
-		else
-			fillUserData();
+		else{
+			$('#status').text('You now have '+userObj.point+' points worths $'+(userObj.point /5)+' and affordable to purchase:');
+			getFlight();
+		}
 	}	
 	else
 		window.location.replace("./");	
 });
+function getFlight(){
+	$.get( "php/airschedule.php?point="+(userObj.point /5), function( res ) {
+	  console.log(res);
+	  	editableGrid = new EditableGrid("DemoGridJsData"); 
+		metadata = [
+				{"name":"flightno","label":"Flight Number","datatype":"string","editable":false},
+				{"name":"depdatetime","label":"Departure","datatype":"string","editable":false},
+				{"name":"arrdatetime","label":"Arrival","datatype":"string","editable":false},
+				{"name":"depairport","label":"Departure Port","datatype":"string","editable":false},
+				{"name":"arrairport","label":"Arrival Port","datatype":"string","editable":false},
+				{"name":"flyminute","label":"Duration","datatype":"string","editable":false},
+			{"name":"aircraft","label":"Aircraft","datatype":"string","editable":false},
+			{"name":"fclass","label":"Class","datatype":"string","editable":false},
+			{"name":"priceadult","label":"Adult","datatype":"string","editable":false},
+			{"name":"pricechild","label":"Child","datatype":"string","editable":false},
+			{"name":"priceinf","label":"Infant","datatype":"string","editable":false},
+			{"name":"tax","label":"Tax","datatype":"string","editable":false}
+		];
+		editableGrid.load({"metadata" : metadata,"data" : res.data});
+		editableGrid.renderGrid("tablecontent", "testgrid");
+	});
+}
 function fillUserData(){
 	
-}
-function makeUpdate(){
-	obj = {};
-	if($("#male").is(':checked') )
-		obj.gender = 'M';
-	else
-		obj.gender = 'F';
-	$.each($('input'), function( index, value ) {
-		type = $(value).attr('type');
-		if(type!='radio'){
-			switch($(value).attr('id')){
-				case "dobBox":
-					if($(value).val() != userObj.dob)
-						obj.dateofbirth = $(value).val();
-					break;
-				case "passportBox":
-					if($(value).val() != userObj.passport)
-						obj.passport = $(value).val();
-					break;
-				case "surnameBox":
-					if($(value).val() != userObj.surName)
-						obj.surname = $(value).val();
-					break;
-				case "mobileBox":
-					if($(value).val() != userObj.mobile)
-						obj.mobileno = $(value).val();
-					break;
-				case "nationBox":
-					if($(value).val() != userObj.nation)
-						obj.nationality = $(value).val();
-					break;
-				case "givennameBox":
-					if($(value).val() != userObj.givenName)
-						obj.givenname = $(value).val();
-					break;
-			}
-		}
-	});
-	$.ajax({
-	  type: "POST",
-	  url: "php/updatePersonal.php",
-	  data: {
-	  	"id" : userObj.id,
-	  	"obj" : obj
-	  },
-	  success: function(res){
-	  		console.log(res);
-	  		if(res.error==null){
-	  			userObj = res.userObj;
-	  			removeCookie("user");
-	  		}
-	  		else{
-	  			switch(res.error.code){
-	  				case 300:
-	  					console.log("error")
-	  					break;
-	  			}
-	  		}
-	  },
-	  error: function(jqXHR, textStatus, errorThrown) {
-			console.log(jqXHR);
-		},
-	  dataType: "json"
-	});
 }
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
