@@ -30,7 +30,7 @@
         		$i = 0;
 	        	while($row = $result->fetch_assoc()) {
 			        $obj = new stdClass();
-	        				$obj -> hotelid 			= $row["HotelID"];
+	        				$obj -> id 			= $row["HotelID"];
 	        				$obj -> chiname 	= $row["ChiName"];
 	        				$obj -> engname 	= $row["EngName"];
 	        				$obj -> star 		= $row["Star"];
@@ -40,13 +40,13 @@
 	        				$obj -> district		= $row["District"];
 	        				$obj -> address 		= $row["Address"];
 	        				$obj -> tel 		= $row["Tel"];
-	        				$obj -> roomtype 		= $row["RoomType"];
+	        				$obj -> rmtype 		= $row["RoomType"];
 	        				$obj -> nonsmoking 		= $row["NonSmoking"];
-	        				$obj -> roomnum 		= $row["RoomNum"];
-	        				$obj -> roomsize 		= $row["RoomSize"];
+	        				$obj -> rmnum 		= $row["RoomNum"];
+	        				$obj -> rmsize 		= $row["RoomSize"];
 	        				$obj -> adultnum 		= $row["AdultNum"];
 	        				$obj -> childnum 		= $row["ChildNum"];
-	        				$obj -> roomdesc 		= $row["RoomDesc"];
+	        				$obj -> rmdesc 		= $row["RoomDesc"];
 	        				$obj -> price 		= $row["Price"];
 	        		$data = array(
 						"id" => $i,

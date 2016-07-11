@@ -18,7 +18,6 @@
         	global $rmid;
         	global $conn;
         	$sql = "UPDATE room SET ".appendSQL()." WHERE RoomType ='".$rmid."' AND HotelID = '".$id."'";
-        	echo $sql;
 			if ($conn->query($sql) === TRUE) {
 			    feedBack(200,null);
 			} else {
