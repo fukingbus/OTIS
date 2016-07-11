@@ -1,5 +1,5 @@
 var userObj;
-var hotelbooking = [];
+var roomTable = [];
 $( document ).ready(function() {
   if(getCookie("user")!=""){
 		res = JSON.parse(getCookie("user"));
@@ -16,7 +16,7 @@ $( document ).ready(function() {
 function fillData(data){
 	editableGrid = new EditableGrid("DemoGridJsData"); 
 	metadata = [
-			{"name":"id" 			,"label":"Hotel ID","datatype":"string","editable":false},
+			{"name":"hotelid" 			,"label":"Hotel ID","datatype":"string","editable":false},
 			{"name":"chiname" 	,"label":"Chinese","datatype":"string","editable":false},
 			{"name":"engname" 	,"label":"English","datatype":"string","editable":false},
 			{"name":"star" 		,"label":"Star","datatype":"string","editable":true},
@@ -26,19 +26,46 @@ function fillData(data){
 			{"name":"district"	,"label":"District","datatype":"string","editable":true},
 			{"name":"address" 	,"label":"Address","datatype":"string","editable":true},
 			{"name":"tel" 		,"label":"Tel","datatype":"string","editable":true},
-			{"name":"rmtype" 		,"label":"Room Type","datatype":"string","editable":true},
+			{"name":"roomtype" 		,"label":"Room Type","datatype":"string","editable":true},
 			{"name":"nonsmoking"	,"label":"Non Smoking","datatype":"string","editable":true},
-			{"name":"rmnum" 		,"label":"Room Number","datatype":"string","editable":true},
-			{"name":"rmsize" 		,"label":"Room Size","datatype":"string","editable":true},
+			{"name":"roomnum" 		,"label":"Room Number","datatype":"string","editable":true},
+			{"name":"roomsize" 		,"label":"Room Size","datatype":"string","editable":true},
 			{"name":"adultnum" 	,"label":"Adult","datatype":"string","editable":true},
 			{"name":"childnum" 	,"label":"Child","datatype":"string","editable":true},
 			{"name":"rmdesc" 		,"label":"Desc","datatype":"string","editable":true},
 			{"name":"price" 		,"label":"Price","datatype":"string","editable":true},
 	];
-	
+	roomTable = data;
 	editableGrid.load({"metadata" : metadata,"data" : data});
 	editableGrid.renderGrid("tablecontent", "testgrid");
-	//editableGrid.loadJSON("grid.json");
+		editableGrid.modelChanged = function(rowIndex, columnIndex, oldValue, newValue, row) { 
+			$.ajax({
+			  type: "POST",
+			  url: "php/update_room.php",
+			  data: {
+			  	"id" : roomTable[rowIndex].values.id,
+			  	"rmid" : roomTable[rowIndex].values.rmtype,
+			  	"obj" : roomTable[0].values
+			  },
+			  success: function(res){
+			  		console.log(res);
+			  		if(res.error==null){
+			  			
+			  		}
+			  		else{
+			  			switch(res.error.code){
+			  				case 300:
+			  					console.log("error")
+			  					break;
+			  			}
+			  		}
+			  },
+			  error: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR);
+				},
+			  dataType: "json"
+			});
+		};
 }
 function getRoom(){
 	$.get( "php/hotel_details.php?id="+userObj.id, function( res ) {

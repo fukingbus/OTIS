@@ -91,8 +91,8 @@ function pullRoom(id){
 		console.log(res);
 		$.each(res.data, function( key, value ) {
 		  $('#rmTypeBox').append($("<option></option>")
-                    .attr("value",value.values.rmtype)
-                    .text(value.values.rmtype));
+                    .attr("value",value.values.roomtype)
+                    .text(value.values.roomtype));
 		});
 	});
 }
