@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016-07-11 01:48:31
+-- 產生時間： 2016-07-11 15:59:45
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.21
 
@@ -369,7 +369,8 @@ CREATE TABLE `hotelbooking` (
 INSERT INTO `hotelbooking` (`BookingID`, `OrderDate`, `StaffID`, `CustID`, `HotelID`, `RoomType`, `Price`, `RoomNum`, `TotalAmt`, `Checkin`, `Checkout`, `Remark`) VALUES
 (3, '2016-07-26', 'fai1', 'C001', 7, '傳統客房', 1, 1, 1, '2016-07-05', '2016-07-27', '1'),
 (4, '2016-07-26', 'fai1', 'C002', 19, '套房, 2 間臥室', 4, 2, 3, '2016-07-05', '2016-07-27', '6'),
-(5, '2016-07-19', 'fai1', 'C003', 11, '豪華標準客房', 4, 2, 2, '2016-06-28', '2016-07-29', '6');
+(5, '2016-07-19', 'fai1', 'C003', 11, '豪華標準客房', 4, 2, 2, '2016-06-28', '2016-07-29', '6'),
+(7, '2016-07-11', 'fai1', 'C001', 2, '四人房', 200, 1, 100, '2016-07-11', '2016-07-13', '300');
 
 -- --------------------------------------------------------
 
@@ -607,7 +608,7 @@ ALTER TABLE `flightbooking`
 -- 使用資料表 AUTO_INCREMENT `hotelbooking`
 --
 ALTER TABLE `hotelbooking`
-  MODIFY `BookingID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `BookingID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 已匯出資料表的限制(Constraint)
 --
