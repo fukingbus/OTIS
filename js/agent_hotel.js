@@ -16,7 +16,7 @@ $( document ).ready(function() {
 function fillData(data){
 	editableGrid = new EditableGrid("DemoGridJsData"); 
 	metadata = [
-			{"name":"hotelid" 			,"label":"Hotel ID","datatype":"string","editable":false},
+			{"name":"id" 			,"label":"Hotel ID","datatype":"string","editable":false},
 			{"name":"chiname" 	,"label":"Chinese","datatype":"string","editable":false},
 			{"name":"engname" 	,"label":"English","datatype":"string","editable":false},
 			{"name":"star" 		,"label":"Star","datatype":"string","editable":false},
@@ -26,13 +26,13 @@ function fillData(data){
 			{"name":"district"	,"label":"District","datatype":"string","editable":false},
 			{"name":"address" 	,"label":"Address","datatype":"string","editable":false},
 			{"name":"tel" 		,"label":"Tel","datatype":"string","editable":false},
-			{"name":"roomtype" 		,"label":"Room Type","datatype":"string","editable":false},
+			{"name":"rmtype" 		,"label":"Room Type","datatype":"string","editable":false},
 			{"name":"nonsmoking"	,"label":"Non Smoking","datatype":"string","editable":false},
-			{"name":"roomnum" 		,"label":"Room Number","datatype":"string","editable":false},
-			{"name":"roomsize" 		,"label":"Room Size","datatype":"string","editable":false},
+			{"name":"rmnum" 		,"label":"Room Number","datatype":"string","editable":false},
+			{"name":"rmsize" 		,"label":"Room Size","datatype":"string","editable":false},
 			{"name":"adultnum" 	,"label":"Adult","datatype":"string","editable":false},
 			{"name":"childnum" 	,"label":"Child","datatype":"string","editable":false},
-			{"name":"roomdesc" 		,"label":"Desc","datatype":"string","editable":false},
+			{"name":"rmdesc" 		,"label":"Desc","datatype":"string","editable":false},
 			{"name":"price" 		,"label":"Price","datatype":"string","editable":false},
 	];
 	editableGrid.load({"metadata" : metadata,"data" : data});
