@@ -1,7 +1,7 @@
 <?php
 	header('Content-type: application/json');
 	include 'conn/conn.php';
-		$id = "";
+		$id = null;
 		if(isset($_GET['id']))
 			$id = $_GET['id'];
         feedBack(200,getFlightBooking());
