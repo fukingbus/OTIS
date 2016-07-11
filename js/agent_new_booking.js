@@ -36,6 +36,7 @@ $( document ).ready(function() {
 	else
 		window.location.replace("./");	
 });
+
 function makeBooking(type){
 obj= {};
 	switch(type){
@@ -74,6 +75,26 @@ obj= {};
 	}
 	console.log(obj);
 	submitAdd(type,obj);
+}
+function pullHotel(){
+	$.get( "php/hotels.php", function( res ) {
+		$.each(res.obj, function( key, value ) {
+		  $('#hotelIDBox').append($("<option></option>")
+                    .attr("value",value.id)
+                    .text(value.engname));
+		});
+	});
+}
+function pullRoom(id){
+	console.log(id);
+	$.get( "php/hotel_details.php?id="+id, function( res ) {
+		console.log(res);
+		$.each(res.data, function( key, value ) {
+		  $('#rmTypeBox').append($("<option></option>")
+                    .attr("value",value.values.rmtype)
+                    .text(value.values.rmtype));
+		});
+	});
 }
 function pullFlight(){
 	$.get( "php/getflight.php", function( res ) {
