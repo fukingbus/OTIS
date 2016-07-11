@@ -60,7 +60,7 @@ obj= {};
 				"staffid":$('#FstaffIDBox').val(),
 				"orderdate":$('#ForderDateBox').val(),
 				"custid":$('#FcustIDBox').val(),
-				"depdatetime":flightObj.values.depdatetime,
+				"depdatetime":flightObj[0].values.depdatetime,
 				"class":$('#classBox').val(),
 				"flightno":$('#flightNoBox').val(),
 				"adultnum":$('#audltNumBox').val(),

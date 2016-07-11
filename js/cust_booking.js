@@ -71,6 +71,11 @@ function pullHotelBooking(){
 }
 function pullFlightBooking(){
 	$.get( "php/flight_booking.php?id="+userObj.id, function( res ) {
+		$( res.obj ).each(function( index, value ) {
+			diff = Math.floor((new Date(value.values.depdatetime) - new Date()) / (1000*60*60*24));
+		  if(diff <=7 && diff > 0)
+		  	  alert(value.values.flightno + ' Will departs in 7 days');
+		});
 		console.log(res);
 		flightbooking = res.obj;
 		fillData('flight',flightbooking);
